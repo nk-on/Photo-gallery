@@ -28,6 +28,9 @@ body {
   width: 20%;
   text-align: center;
 }
+.get-images input{
+    width: 50px;
+}
 .buttons{
     display: flex;
     gap:20px;

@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo gallery</title>
     <link rel="stylesheet" href="src/style.css">
 </head>
+
 <body>
-    <main class = 'container'>
-        <form class = "get-images">
+    <main class='container'>
+        <form class="get-images">
             <h2>Enter number of photos</h2>
-            <input type="number" name="number-chooser" id="number-chooser">
-           <div class="buttons">
-            <button type="submit" class = "get-images-button">Get images</button>
-            <button type="submit" class = "get-random-images-button">Get random amount of images</button>
-           </div>
+            <input type="number" name="number-input" id="number-input">
+            <div class="buttons">
+                <button type="submit" class="get-images-button" data-get-images>Get images</button>
+                <button type="submit" class="get-random-images-button" data-get-random-images>Get random amount of
+                    images</button>
+            </div>
         </form>
+        <div class="pictures-container" data-pictures-container></div>
     </main>
+    <script src="src/script.js"></script>
 </body>
+
 </html>
