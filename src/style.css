@@ -37,11 +37,15 @@ body {
 }
 button {
  font-size: 15px;
-  padding: 25px;
+  padding: 10px;
   border: none;
   background-color: #000000;
   color: #fff;
+  cursor: pointer;
 }
 .get-images #number-chooser {
   width: 50px;
+}
+#search-input{
+    width: 100px;
 }

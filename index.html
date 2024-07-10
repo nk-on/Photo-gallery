@@ -11,11 +11,14 @@
 <body>
     <main class='container'>
         <form class="get-images">
-            <h2>Enter number of photos</h2>
+            <label for="number-input">Enter number of pictures</label>
             <input type="number" name="number-input" id="number-input">
+            <label for="search-input">Search images</label>
+            <input type = "search" id = "search-input" name="search-input">
             <div class="buttons">
-                <button type="submit" class="get-images-button" data-get-images>Get images</button>
-                <button type="submit" class="get-random-images-button" data-get-random-images>Get random amount of
+                <button type="submit" class="get-images-button" data-search-images>Searches images</button>
+                <button type="submit" class="get-images-button" data-get-images>Get Random images</button>
+                <button type="submit" class="get-images-button" data-get-random-images>Get random amount of
                     images</button>
             </div>
         </form>
