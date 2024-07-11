@@ -14,11 +14,10 @@ function displayImages(images) {
     picturesContainer.appendChild(img);
   });
 }
-function chooseImages(data) {
+function chooseImages(data,numberOfImages) {
   //we should choose random amount of pictures from this array
   //run loop untill number choosen by user
   const photosArray = data.photos;
-  const numberOfImages = Number(numberInput.value);
   const generetedIndexes = new Set();
   const choosenImages = [];
   let i = 0;
@@ -46,7 +45,7 @@ async function getImages(e) {
     },
   });
   const data = await res.json();
-  chooseImages(data);
+  chooseImages(data,numberInput.value);
   numberInput.value = null;
 };
 async function searchImage(e){
