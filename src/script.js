@@ -7,12 +7,11 @@ const getRandomAmountOfImage = document.querySelector(
 const searchImagesButton = document.querySelector("[data-search-images]");
 const picturesContainer = document.querySelector("[data-pictures-container]");
 function displayImages(images) {
-  console.log(images)
-  picturesContainer.innerHTML = '';
-  images.forEach((image)=>{
-     const img = document.createElement('img');
-     img.setAttribute('src',image.src.medium)
-     picturesContainer.appendChild(img);
+  picturesContainer.innerHTML = "";
+  images.forEach((image) => {
+    const img = document.createElement("img");
+    img.setAttribute("src", image.src.medium);
+    picturesContainer.appendChild(img);
   });
 }
 function chooseImages(data) {
@@ -30,10 +29,10 @@ function chooseImages(data) {
     } else {
       generetedIndexes.add(randomIdx);
       i++;
-      choosenImages.push(photosArray[i]);
+      choosenImages.push(photosArray[randomIdx]);
     }
   }
-  displayImages(choosenImages)
+  displayImages(choosenImages);
 }
 async function getImages(e) {
   e.preventDefault();
@@ -48,5 +47,27 @@ async function getImages(e) {
   });
   const data = await res.json();
   chooseImages(data);
+  numberInput.value = null;
+};
+async function searchImage(e){
+  e.preventDefault();
+  if (searchInput.value === '') {
+    alert("Enter valid query");
+    return;
+  };
+  if (numberInput.value === null || Number(numberInput.value) <= 0) {
+    alert("Enter valid number");
+    return;
+  }
+  const res = await fetch(`https://api.pexels.com/v1/search?query=${searchInput.value}`, {
+    headers: {
+      Authorization: "uJ7wfW86udCYLqHY1cmNI5OfZD8V8UroDvM7ERHWXvXOkI5YL2V5z2WF",
+    },
+  });
+  const data = await res.json();
+  chooseImages(data);
+  searchInput.value = "";
+  numberInput.value = null;
 }
 getImageButton.addEventListener("click", getImages);
+searchImagesButton.addEventListener("click",searchImage)
