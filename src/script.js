@@ -6,7 +6,16 @@ const getRandomAmountOfImage = document.querySelector(
 );
 const searchImagesButton = document.querySelector("[data-search-images]");
 const picturesContainer = document.querySelector("[data-pictures-container]");
-function displayImages(data) {
+function displayImages(images) {
+  console.log(images)
+  picturesContainer.innerHTML = '';
+  images.forEach((image)=>{
+     const img = document.createElement('img');
+     img.setAttribute('src',image.src.medium)
+     picturesContainer.appendChild(img);
+  });
+}
+function chooseImages(data) {
   //we should choose random amount of pictures from this array
   //run loop untill number choosen by user
   const photosArray = data.photos;
@@ -23,8 +32,8 @@ function displayImages(data) {
       i++;
       choosenImages.push(photosArray[i]);
     }
-  };
-  console.log(choosenImages)
+  }
+  displayImages(choosenImages)
 }
 async function getImages(e) {
   e.preventDefault();
@@ -38,6 +47,6 @@ async function getImages(e) {
     },
   });
   const data = await res.json();
-  displayImages(data);
+  chooseImages(data);
 }
 getImageButton.addEventListener("click", getImages);
