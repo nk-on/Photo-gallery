@@ -22,9 +22,9 @@ function chooseImages(data,numberOfImages) {
   const choosenImages = [];
   let i = 0;
   while (i < numberOfImages) {
-    let randomIdx = Math.floor(Math.random() * numberOfImages);
+    let randomIdx = Math.floor(Math.random() * photosArray.length - 1);
     if (generetedIndexes.has(randomIdx)) {
-      Math.floor(Math.random() * numberOfImages);
+      randomIdx = Math.floor(Math.random() * photosArray.length - 1);
     } else {
       generetedIndexes.add(randomIdx);
       i++;
@@ -64,7 +64,7 @@ async function searchImage(e){
     },
   });
   const data = await res.json();
-  chooseImages(data);
+  chooseImages(data,numberInput.value);
   searchInput.value = "";
   numberInput.value = null;
 }
