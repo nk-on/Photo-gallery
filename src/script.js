@@ -80,10 +80,11 @@ async function getRandomAmountOfImages(e) {
     },
   });
   const data = await res.json();
-  chooseImages(data, data.photos.length - 1);
+  const amountOfImages = Math.floor(Math.random() * data.photos.length - 1);
+  chooseImages(data, amountOfImages);
   searchInput.value = '';
   numberInput.value = null;
 }
 getImageButton.addEventListener('click', getImages);
 searchImagesButton.addEventListener('click', searchImage);
-getRandomAmountOfImage.addEventListener('click',getRandomAmountOfImages)
+getRandomAmountOfImage.addEventListener('click', getRandomAmountOfImages);
