@@ -6,6 +6,7 @@ const getRandomAmountOfImage = document.querySelector(
 );
 const searchImagesButton = document.querySelector('[data-search-images]');
 const picturesContainer = document.querySelector('[data-pictures-container]');
+//This function displays inside pictures container given array of images
 function displayImages(images) {
   picturesContainer.innerHTML = '';
   images.forEach((image) => {
@@ -14,15 +15,15 @@ function displayImages(images) {
     picturesContainer.appendChild(img);
   });
 }
+//Choosing images arrording to given numberOfimages arguement
 function chooseImages(data, numberOfImages) {
-  //we should choose random amount of pictures from this array
-  //run loop untill number choosen by user
   const photosArray = data.photos;
   const generetedIndexes = new Set();
   const choosenImages = [];
   let i = 0;
   while (i < numberOfImages) {
     let randomIdx = Math.floor(Math.random() * photosArray.length - 1);
+    //Preventing getting dublicate indexes
     if (generetedIndexes.has(randomIdx)) {
       randomIdx = Math.floor(Math.random() * photosArray.length - 1);
     } else {
@@ -32,7 +33,8 @@ function chooseImages(data, numberOfImages) {
     }
   }
   displayImages(choosenImages);
-}
+};
+//Get random images according to user's specified inputs
 async function getImages(e) {
   e.preventDefault();
   if (numberInput.value === null || Number(numberInput.value) <= 0) {
@@ -48,6 +50,7 @@ async function getImages(e) {
   chooseImages(data, numberInput.value);
   numberInput.value = null;
 }
+//search for particular image
 async function searchImage(e) {
   e.preventDefault();
   if (searchInput.value === '') {
@@ -72,6 +75,7 @@ async function searchImage(e) {
   searchInput.value = '';
   numberInput.value = null;
 }
+//Get random amount of images
 async function getRandomAmountOfImages(e) {
   e.preventDefault();
   const res = await fetch('https://api.pexels.com/v1/curated', {
